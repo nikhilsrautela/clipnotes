@@ -1,6 +1,6 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
-import logo from "./assets/logo.png"
-import gif from "./assets/giphy.gif"
+import logo from "../assets/logo.png"
+import gif from "../assets/giphy.gif"
 
 
 // App.jsx

@@ -11,9 +11,12 @@ router.post("/", async (req, res) => {
 
     res.json({ notes });
 
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: err.message });
+  } catch (error) {
+    console.error("Generate route error:", error);
+
+    return res.status(400).json({
+      success: false,
+      message: error.message,});
   }
 });
 

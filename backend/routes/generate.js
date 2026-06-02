@@ -1,4 +1,5 @@
 import express from "express";
+import { getTranscript } from "../services/youtube.js";
 import { generateNotes } from "../services/ai.js";
 
 const router = express.Router();
@@ -14,11 +15,13 @@ router.post("/", async (req, res) => {
       });
     }
 
-    const notes = await generateNotes(url);
+    const transcript = await getTranscript(url);
+
+    const notes = await generateNotes(transcript);
 
     return res.json({
+      success: true,
       notes,
-      source: "ai-only"
     });
 
   } catch (error) {
@@ -26,7 +29,7 @@ router.post("/", async (req, res) => {
 
     return res.status(500).json({
       success: false,
-      message: "Failed to generate notes",
+      message: error.message || "Failed to generate notes",
     });
   }
 });

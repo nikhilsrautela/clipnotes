@@ -7,19 +7,37 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-  origin: "https://clipnotes-one.vercel.app",
-  methods: ["GET", "POST"],
-  credentials: true}));
+app.use(express.json());
+
+// CORS (frontend allowed)
+app.use(
+  cors({
+    origin: "https://clipnotes-one.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: false,
+  })
+);
 
 app.get("/", (req, res) => {
-  res.send("ClipNotes backend is running 🚀");
+  res.json({
+    success: true,
+    message: "ClipNotes backend is running 🚀",
+  });
 });
-
-app.use(express.json());
 
 app.use("/api/generate", generateRoute);
 
-app.listen(5000, () => {
-  console.log("Backend running on port 5000");
+app.use((err, req, res, next) => {
+  console.error("Unhandled Error:", err);
+
+  res.status(500).json({
+    success: false,
+    message: "Internal Server Error",
+  });
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });

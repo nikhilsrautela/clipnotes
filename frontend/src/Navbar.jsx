@@ -1,4 +1,6 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import logo from "./assets/logo.png"
+import gif from "./assets/giphy.gif"
 
 
 // App.jsx
@@ -10,7 +12,7 @@ export default function Navbar() {
 
       {/* Background image */}
             <img
-                src="src/assets/giphy.gif" alt="hero" className="absolute inset-0 w-full h-full object-cover z-0" />
+                src={gif}alt="hero" className="absolute inset-0 w-full h-full object-cover z-0" />
            
             {/* Optional dark overlay for readability */}
             <div className="absolute inset-0 bg-black/40 z-10" />
@@ -19,7 +21,7 @@ export default function Navbar() {
         <nav className="absolute top-0 left-0 right-0 z-99 flex items-start justify-between px-6 mx-16">
                 {/* <span className="text-white text-xl font-semibold">Logo</span> */}
                 <div>
-            <img src="src/assets/logo1.png" className="h-10 w-auto cursor-pointer m-1 sm:h-15"></img></div>
+            <img src={logo} className="h-10 w-auto cursor-pointer m-1 sm:h-15"></img></div>
             
           <div className="flex">
             <ul className="flex gap-8 text-white text-[18px] pt-5">

@@ -12,7 +12,7 @@ export default function GenerateNotes() {
   setNotes("");
 
   try {
-    const res = await fetch("http://localhost:5000/api/generate", {
+    const res = await fetch("https://clipnotes-9gdr.onrender.com/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

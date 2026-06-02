@@ -1,20 +1,32 @@
 import express from "express";
-import { getTranscript } from "../services/youtube.js";
 import { generateNotes } from "../services/ai.js";
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const transcript = await getTranscript(req.body.url);
-    const notes = await generateNotes(transcript);
+    const { url } = req.body;
 
-    return res.json({ notes });
-  } catch (error) {
-    console.error(error);
+    if (!url) {
+      return res.status(400).json({
+        success: false,
+        message: "URL is required",
+      });
+    }
+
+    const notes = await generateNotes(url);
 
     return res.json({
-      notes: "AI could not process video properly, but system is working."
+      notes,
+      source: "ai-only"
+    });
+
+  } catch (error) {
+    console.error("Generate Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to generate notes",
     });
   }
 });

@@ -90,14 +90,19 @@ const handleDownload = () => {
 </div>
 
       {/* Output Section */}
-      {notes && (
+     {notes && (
   <div className={`mt-10 p-6 border rounded-2xl shadow-2xl whitespace-pre-line font-ppeditorialold ${
-    notes.toLowerCase().includes("error") || notes.toLowerCase().includes("failed")
+    typeof notes === "string" && notes.toLowerCase().includes("error") || notes.toLowerCase().includes("failed")
       ? "bg-red-50 border-red-300 text-red-700"
       : "bg-white"
   }`}>
 
-           <div className="mt-6 flex gap-4 justify-center">
+    {/* 🔥 ADD THIS */}
+    <div className="mb-4">
+      {notes}
+    </div>
+
+    <div className="mt-6 flex gap-4 justify-center">
 
     {/* Copy Button */}
     <button

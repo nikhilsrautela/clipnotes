@@ -11,6 +11,10 @@ app.use(cors({
   origin: "https://clipnotes-one.vercel.app",
   credentials: true}));
 
+app.get("/", (req, res) => {
+  res.send("ClipNotes backend is running 🚀");
+});
+
 app.use(express.json());
 
 app.use("/api/generate", generateRoute);

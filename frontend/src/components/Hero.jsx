@@ -21,10 +21,15 @@ export default function GenerateNotes() {
     });
 
     const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Failed to generate notes");
+    }
+
     setNotes(data.notes);
 
   } catch (err) {
-    setNotes("Error generating notes");
+    setNotes(err.message); // 👈 SHOW REAL ERROR
   } finally {
     setLoading(false);
   }
@@ -61,6 +66,7 @@ const handleDownload = () => {
   <div className="flex items-center overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg">
 
     <input
+      disabled={loading}
       type="text"
       placeholder="https://youtube.com/watch?v=..."
       value={url}
@@ -85,8 +91,12 @@ const handleDownload = () => {
 
       {/* Output Section */}
       {notes && (
-        <div className="w-full mt-10 p-6 bg-white border rounded-2xl shadow-2xl whitespace-pre-line font-ppeditorialold">
-          {notes}
+  <div className={`mt-10 p-6 border rounded-2xl shadow-2xl whitespace-pre-line font-ppeditorialold ${
+    notes.toLowerCase().includes("error") || notes.toLowerCase().includes("failed")
+      ? "bg-red-50 border-red-300 text-red-700"
+      : "bg-white"
+  }`}>
+
            <div className="mt-6 flex gap-4 justify-center">
 
     {/* Copy Button */}

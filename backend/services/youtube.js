@@ -1,4 +1,5 @@
 import ytdlp from "yt-dlp-exec";
+import axios from "axios";
 
 export async function getTranscript(url) {
   try {
@@ -9,18 +10,31 @@ export async function getTranscript(url) {
       subLang: "en",
     });
 
-    const subtitles =
+    const captions =
       output.subtitles?.en ||
       output.automatic_captions?.en;
 
-    if (!subtitles) {
+    if (!captions || captions.length === 0) {
       throw new Error("No captions available for this video");
     }
 
-    // subtitles come as segmented text
-    const transcript = subtitles
-      .map(s => s.text || "")
-      .join(" ");
+    // Get first caption track URL
+    const captionUrl = captions[0].url;
+
+    if (!captionUrl) {
+      throw new Error("Caption URL not found");
+    }
+
+    const response = await axios.get(captionUrl);
+    const vttData = response.data;
+
+    // Convert VTT → plain text
+    const transcript = vttData
+      .replace(/WEBVTT/g, "")
+      .replace(/\d\d:\d\d:\d\d\.\d\d\d --> .*?\n/g, "")
+      .replace(/<\/?[^>]+(>|$)/g, "")
+      .replace(/\n+/g, " ")
+      .trim();
 
     return transcript;
   } catch (err) {

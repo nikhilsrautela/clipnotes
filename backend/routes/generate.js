@@ -12,9 +12,9 @@ router.post("/", async (req, res) => {
     res.json({ notes });
 
   } catch (error) {
-    console.error("Generate route error:", error);
+    console.error("FULL ERROR:", error);
 
-    return res.status(400).json({
+    return res.status(500).json({
       success: false,
       message: error.message,});
   }

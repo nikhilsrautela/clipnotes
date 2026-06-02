@@ -12,6 +12,14 @@ export async function getTranscript(url) {
     throw new Error("Invalid YouTube URL");
   }
 
+  try {
+  const transcript = await getTranscript(url);
+} catch (error) {
+  return res.status(400).json({
+    error: "Transcript unavailable for this video. Try another video."
+  });
+}
+
   const transcript = await YoutubeTranscript.fetchTranscript(videoId);
 
   return transcript.map(t => t.text).join(" ");

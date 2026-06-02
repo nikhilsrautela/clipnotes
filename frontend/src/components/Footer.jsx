@@ -17,7 +17,7 @@ export default function Footer(){
 
     {/* Copyright */}
     <div className="text-sm text-center md:text-right">
-      © {new Date().getFullYear()} clipnote.
+      © {new Date().getFullYear()} clipnotes.
     </div>
 
   </div>

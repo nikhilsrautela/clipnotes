@@ -77,7 +77,16 @@ export default function GenerateNotes() {
             disabled={loading}
             className="m-2 px-8 py-3 rounded-2xl bg-black text-white hover:bg-gray-900 transition cursor-pointer"
           >
-            {loading ? "Generating..." : "Generate Notes"}
+           {loading ? (
+  <div className="flex items-center gap-2">
+    <span className="w-2 h-2 bg-white rounded-full animate-bounce"></span>
+    <span className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:0.2s]"></span>
+    <span className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:0.4s]"></span>
+    Generating...
+  </div>
+) : (
+  "Generate Notes"
+)}
           </button>
         </div>
 

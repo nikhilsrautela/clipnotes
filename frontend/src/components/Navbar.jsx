@@ -51,7 +51,7 @@ export default function Navbar() {
       </nav>
 
       <div className="relative z-20 flex flex-col items-center justify-center h-full text-white text-center">
-        <h1 className="text-7xl font-ppeditorialold">Don’t just watch videos.<br></br>Learn them.
+        <h1 className="text-7xl font-ppeditorialold">Don’t just watch videos.<br></br>Understand them.
 </h1>
        
       </div>

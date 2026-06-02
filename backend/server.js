@@ -9,6 +9,7 @@ const app = express();
 
 app.use(cors({
   origin: "https://clipnotes-one.vercel.app",
+  methods: ["GET", "POST"],
   credentials: true}));
 
 app.get("/", (req, res) => {

@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../public/fonts/Gilroy-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('../public/fonts/Gilroy-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'ppeditorialold';
+    src: url('./assets/fonts/ppeditorialold-regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'ppeditorialolditalic';
+    src: url('./assets/fonts/ppeditorialold-italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+  }
+
+   @font-face {
+    font-family: 'ppeditorialold';
+    src: url('./assets/fonts/ppeditorialold-ultralight.otf') format('opentype');
+    font-weight: 200;
+    font-style: normal;
+  }
+
+   @font-face {
+    font-family: 'ppeditorialold';
+    src: url('./assets/fonts/ppeditorialold-ultrabold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+   @font-face {
+    font-family: 'ppeditorialold';
+    src: url('./assets/fonts/ppeditorialold-ultrabolditalic.otf') format('opentype');
+    font-weight: 800;
+    font-style: italic;
+  }
+
+   @font-face {
+    font-family: 'ppeditorialold';
+    src: url('./assets/fonts/ppeditorialold-ultralightitalic.otf') format('woff2');
+    font-weight: 200;
+    font-style: italic;
+  }
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme{
+    --font-gilroy: Gilroy, "sans-serif"
+}
+
+@theme{
+    --font-ppeditorialold: ppeditorialold, "sans-serif"
+}
+
+

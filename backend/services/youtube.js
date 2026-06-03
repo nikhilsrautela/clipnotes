@@ -19,7 +19,6 @@ export async function getTranscript(url) {
       throw new Error("No transcript returned");
     }
 
-    // API returns structured transcript → convert to plain text
     const transcript = response.data.transcript
       .map((t) => t.text)
       .join(" ");

@@ -9,7 +9,6 @@ const app = express();
 
 app.use(express.json());
 
-// CORS (frontend allowed)
 app.use(
   cors({
     origin: "https://clipnotes-one.vercel.app",

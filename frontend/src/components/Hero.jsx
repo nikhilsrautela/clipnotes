@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactMarkdown from 'react-markdown'
 
 export default function GenerateNotes() {
   const [url, setUrl] = useState("");
@@ -96,7 +97,7 @@ export default function GenerateNotes() {
            
       </div>
 
-
+      <ReactMarkdown>  
       {notes && (
         <div
           className={`mt-10 p-6 border rounded-2xl shadow-2xl whitespace-pre-line font-ppeditorialold ${
@@ -123,7 +124,7 @@ export default function GenerateNotes() {
             </button>
           </div>
         </div>
-      )}
+      )}</ReactMarkdown>     
     </section>
   );
 }

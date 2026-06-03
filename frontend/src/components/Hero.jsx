@@ -35,10 +35,14 @@ export default function GenerateNotes() {
     }
   };
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (!notes) return;
-    navigator.clipboard.writeText(notes);
+     try {
+    await navigator.clipboard.writeText(notes);
     alert("Notes copied to clipboard!");
+  } catch {
+    alert("Failed to copy notes");
+  }
   };
 
   const handleDownload = () => {
@@ -97,7 +101,7 @@ export default function GenerateNotes() {
            
       </div>
 
-      <ReactMarkdown>  
+      
       {notes && (
         <div
           className={`mt-10 p-6 border rounded-2xl shadow-2xl whitespace-pre-line font-ppeditorialold ${
@@ -106,7 +110,9 @@ export default function GenerateNotes() {
               : "bg-white"
           }`}>
         
-          <div className="mb-4">{notes}</div>
+          <div className="mb-4">
+            <ReactMarkdown>{notes}</ReactMarkdown>
+          </div>
 
           <div className="mt-6 flex gap-4 justify-center">
             <button
@@ -124,7 +130,7 @@ export default function GenerateNotes() {
             </button>
           </div>
         </div>
-      )}</ReactMarkdown>     
+      )}   
     </section>
   );
 }
